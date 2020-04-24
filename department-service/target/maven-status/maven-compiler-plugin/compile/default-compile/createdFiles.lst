@@ -1,0 +1,5 @@
+com/example/departmentservice/DepartmentServiceApplication.class
+com/example/salaryservice/repository/DepartmentRepository.class
+com/example/departmentservice/controller/DepartmentController.class
+com/example/salaryservice/dao/Department.class
+com/example/salaryservice/service/DepartmentService.class
