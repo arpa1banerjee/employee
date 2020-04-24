@@ -11,7 +11,7 @@ import com.netflix.zuul.exception.ZuulException;
 
 public class PreFilter extends ZuulFilter {
 	
-	private static Logger log = LoggerFactory.getLogger(PreFilter.class);
+	private static Logger LOG = LoggerFactory.getLogger(PreFilter.class);
 
 	@Override
 	public boolean shouldFilter() {
@@ -22,9 +22,7 @@ public class PreFilter extends ZuulFilter {
 	public Object run() throws ZuulException {
 		RequestContext ctx = RequestContext.getCurrentContext();
 	    HttpServletRequest request = ctx.getRequest();
-	    if(log.isInfoEnabled()) {
-	    	log.info("Request Method : {}  Request URL : {}", request.getMethod(), request.getRequestURL().toString());
-	    }
+	    LOG.info("Request Method : " + request.getMethod() + " Request URL : " + request.getRequestURL().toString());
 	    return null;
 	}
 
