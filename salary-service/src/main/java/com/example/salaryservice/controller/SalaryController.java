@@ -1,21 +1,32 @@
 package com.example.salaryservice.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.salaryservice.dao.Salary;
+import com.example.salaryservice.service.SalaryService;
+
 @RestController
-@RequestMapping("/api/salary-service")
+@RequestMapping("/api/v1")
 public class SalaryController {
 	
-	@GetMapping("/getSalary")
-	public String getSalary() {
-		return "Hello salary";
+	@Autowired
+	SalaryService salaryService;
+	
+	@GetMapping("/getSalaryRecordCount")
+	public int getSalaryRecordCount() {
+		return salaryService.getSalaryRecordCount();
 	}
-	@GetMapping("/getSalaryById/{id}")
-	public String getSalaryById(@PathVariable String id) {
-		return "Hello Salary for id: " + id;
+	
+	@GetMapping("/getSalaryRecordByEmpId/{empId}")
+	public List<Salary> getSalaryRecordByEmpId(@PathVariable int empId) {
+		return salaryService.getSalaryRecordByEmpId(empId);
 	}
+	
 
 }
